@@ -6,4 +6,4 @@ Web app to calculate the [Pole of Inaccessibility](https://en.wikipedia.org/wiki
 
 - PAI calculated with the [polylabel](https://github.com/mapbox/polylabel) algorithm
 - GeoJSON data for Germany adapted from [this dataset](https://github.com/isellsoap/deutschlandGeoJSON)
-- Map built with [pigeon-maps](https://github.com/mariusandra/pigeon-maps), with tiles by Stamen and data from OpenStreetMap
+- Map built with [pigeon-maps](https://github.com/mariusandra/pigeon-maps), with Carto tiles and OpenStreetMap data

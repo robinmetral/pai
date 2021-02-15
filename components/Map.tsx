@@ -5,7 +5,7 @@ type MapProps = {
 };
 
 function mapTilerProvider(x: number, y: number, z: number): string {
-  return `http://tile.stamen.com/toner-lite/${z}/${x}/${y}.png`;
+  return `https://basemaps.cartocdn.com/rastertiles/light_nolabels/${z}/${x}/${y}.png`;
 }
 
 const Map = ({ coordinates }: MapProps) => (
@@ -21,10 +21,8 @@ const Map = ({ coordinates }: MapProps) => (
       defaultZoom={6}
       attribution={
         <>
-          Map tiles by <a href="http://stamen.com">Stamen Design</a>, under{" "}
-          <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>.
-          Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under{" "}
-          <a href="http://www.openstreetmap.org/copyright">ODbL</a>.
+          Map tiles by <a href="https://carto.com/">Carto</a>, Data by{" "}
+          <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>.
         </>
       }
     >
