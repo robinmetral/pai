@@ -2,13 +2,18 @@ import { Map as PigeonMap, Marker } from "pigeon-maps";
 
 type MapProps = {
   coordinates: [number, number];
+  prefersDarkMode: boolean;
 };
 
-function mapTilerProvider(x: number, y: number, z: number): string {
-  return `https://basemaps.cartocdn.com/rastertiles/light_nolabels/${z}/${x}/${y}.png`;
+function darkMapTileProvider(x: number, y: number, z: number): string {
+  return `https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/${z}/${x}/${y}.png`;
 }
 
-const Map = ({ coordinates }: MapProps) => (
+function lightMapTileProvider(x: number, y: number, z: number): string {
+  return `https://tiles.stadiamaps.com/tiles/alidade_smooth/${z}/${x}/${y}.png`;
+}
+
+const Map = ({ coordinates, prefersDarkMode }: MapProps) => (
   <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
     <style jsx global>{`
       body {
@@ -16,13 +21,13 @@ const Map = ({ coordinates }: MapProps) => (
       }
     `}</style>
     <PigeonMap
-      provider={mapTilerProvider}
+      provider={prefersDarkMode ? darkMapTileProvider : lightMapTileProvider}
       defaultCenter={coordinates}
       defaultZoom={6}
       attribution={
         <>
-          Map tiles by <a href="https://carto.com/">Carto</a>, Data by{" "}
-          <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>.
+          Map tiles by <a href="https://stadiamaps.com/">Stadia Maps</a>, data
+          by <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>.
         </>
       }
     >

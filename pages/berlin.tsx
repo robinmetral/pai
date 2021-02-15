@@ -5,6 +5,12 @@ import Map from "../components/Map";
 const berlinPIA = polylabel(berlin.features[0].geometry.coordinates, 1.0);
 const coordinates: [number, number] = [berlinPIA[1], berlinPIA[0]];
 
-const Berlin = () => <Map coordinates={coordinates} />;
+type PageProps = {
+  prefersDarkMode: boolean;
+};
+
+const Berlin = ({ prefersDarkMode }: PageProps) => (
+  <Map coordinates={coordinates} prefersDarkMode={prefersDarkMode} />
+);
 
 export default Berlin;
