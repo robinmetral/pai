@@ -1,3 +1,4 @@
+import Head from "next/head";
 import polylabel from "polylabel";
 import germany from "../data/germany.geo.json";
 import Map from "../components/Map";
@@ -9,8 +10,13 @@ type PageProps = {
   prefersDarkMode: boolean;
 };
 
-const Germany = ({ prefersDarkMode }: PageProps) => {
-  console.log(prefersDarkMode);
-  return <Map coordinates={coordinates} prefersDarkMode={prefersDarkMode} />;
-};
+const Germany = ({ prefersDarkMode }: PageProps) => (
+  <>
+    <Head>
+      <title>Pole of Inaccessibility: Germany</title>
+    </Head>
+    <Map coordinates={coordinates} prefersDarkMode={prefersDarkMode} />
+  </>
+);
+
 export default Germany;

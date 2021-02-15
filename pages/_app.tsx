@@ -1,5 +1,6 @@
-import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
+import Head from "next/head";
+import type { AppProps } from "next/app";
 
 function App({ Component, pageProps }: AppProps) {
   const [prefersDarkMode, setPrefersDarkMode] = useState<boolean>(false);
@@ -12,7 +13,14 @@ function App({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  return <Component {...pageProps} prefersDarkMode={prefersDarkMode} />;
+  return (
+    <>
+      <Head>
+        <title>Inaccessibility</title>
+      </Head>
+      <Component {...pageProps} prefersDarkMode={prefersDarkMode} />
+    </>
+  );
 }
 
 export default App;

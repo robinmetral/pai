@@ -1,3 +1,4 @@
+import Head from "next/head";
 import polylabel from "polylabel";
 import berlin from "../data/berlin.geo.json";
 import Map from "../components/Map";
@@ -10,7 +11,12 @@ type PageProps = {
 };
 
 const Berlin = ({ prefersDarkMode }: PageProps) => (
-  <Map coordinates={coordinates} prefersDarkMode={prefersDarkMode} />
+  <>
+    <Head>
+      <title>Pole of Inaccessibility: Berlin</title>
+    </Head>
+    <Map coordinates={coordinates} prefersDarkMode={prefersDarkMode} />
+  </>
 );
 
 export default Berlin;
