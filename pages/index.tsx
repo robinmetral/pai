@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import {
+  useState,
+  // useEffect
+} from "react";
 import Head from "next/head";
 import polylabel from "polylabel";
 import { Map, Marker } from "pigeon-maps";
@@ -36,14 +39,14 @@ const Index = () => {
   /**
    * Dark mode
    */
-  const [prefersDarkMode, setPrefersDarkMode] = useState<boolean>(false);
-  useEffect(() => {
-    if (window.matchMedia) {
-      return setPrefersDarkMode(
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      );
-    }
-  }, []);
+  // const [prefersDarkMode, setPrefersDarkMode] = useState<boolean>(false);
+  // useEffect(() => {
+  //   if (window.matchMedia) {
+  //     return setPrefersDarkMode(
+  //       window.matchMedia("(prefers-color-scheme: dark)").matches
+  //     );
+  //   }
+  // }, []);
 
   /**
    * Map logic
@@ -51,12 +54,14 @@ const Index = () => {
   function mapTileProvider(
     x: number,
     y: number,
-    z: number,
-    dpr?: number
+    z: number
+    // dpr?: number
   ): string {
-    return `https://tiles.stadiamaps.com/tiles/alidade_smooth${
-      prefersDarkMode ? "_dark" : ""
-    }/${z}/${x}/${y}${dpr && dpr >= 2 ? "@2x" : ""}.png`;
+    const s = String.fromCharCode(97 + ((x + y + z) % 3));
+    return `https://${s}.tile.openstreetmap.org/${z}/${x}/${y}.png`;
+    // return `https://tiles.stadiamaps.com/tiles/alidade_smooth${
+    //   prefersDarkMode ? "_dark" : ""
+    // }/${z}/${x}/${y}${dpr && dpr >= 2 ? "@2x" : ""}.png`;
   }
 
   const [mapState, setMapState] = useState<MapState>(MAP_VIEWS.germany);
